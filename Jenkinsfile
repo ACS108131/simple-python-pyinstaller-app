@@ -1,5 +1,6 @@
 pipeline {
     agent any 
+    bat 'def username='123''
     stages {
         stage('Build') { 
             steps {
@@ -20,13 +21,15 @@ pipeline {
         stage('Deliver') {
             steps {
                 bat 'pyinstaller --onefile sources/add2vals.py'
+                bat 'def username='123''
+                bat 'echo "${username}"'
+                bat 'echo '${username}''
             }
             post {
                 success {
                     archiveArtifacts 'dist/add2vals.exe'
-                    def username='123'
-                    bat 'echo "${username}"'
-                    bat 'echo '${username}''
+                    
+                    
                 }
             }
         }
