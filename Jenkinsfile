@@ -6,6 +6,7 @@ pipeline {
         stage('Build') { 
             steps {
                 bat 'python -m py_compile sources/add2vals.py sources/calc.py' 
+                ls
             }
         }
         stage('Test') {
