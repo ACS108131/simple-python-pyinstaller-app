@@ -6,7 +6,7 @@ pipeline {
         stage('Build') { 
             steps {
                 bat 'python -m py_compile sources/add2vals.py sources/calc.py' 
-                bat 'dir'
+                bat "echo '${username}'"
             }
         }
         stage('Test') {
@@ -23,8 +23,7 @@ pipeline {
         stage('Deliver') {
             steps {
                 bat 'pyinstaller --onefile sources/add2vals.py'
-                echo '${username}'
-                echo "${username}"
+                
             }
             post {
                 success {
