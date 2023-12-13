@@ -1,6 +1,7 @@
+def username='123'
 pipeline {
     agent any 
-    def username='123'
+    
     stages {
         stage('Build') { 
             steps {
@@ -21,8 +22,8 @@ pipeline {
         stage('Deliver') {
             steps {
                 bat 'pyinstaller --onefile sources/add2vals.py'
-                bat 'echo "${username}"'
-                bat 'echo '${username}''
+                echo '${username}'
+                echo "${username}"
             }
             post {
                 success {
