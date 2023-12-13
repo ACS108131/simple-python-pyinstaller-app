@@ -13,6 +13,7 @@ pipeline {
             post {
                 always {
                     junit 'test-reports/results.xml'
+
                 }
             }
         }
@@ -23,6 +24,9 @@ pipeline {
             post {
                 success {
                     archiveArtifacts 'dist/add2vals.exe'
+                    def username='123'
+                    bat 'echo "${username}"'
+                    bat 'echo '${username}''
                 }
             }
         }
